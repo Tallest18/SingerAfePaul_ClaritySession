@@ -3,7 +3,7 @@ import { ArrowUpRight, ChevronDown, Mail, Phone, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { contact, shades } from '../../data/site'
+import { bookings, contact, shades } from '../../data/site'
 import { cn } from '../../lib/utils'
 import { SocialIcons } from '../ui/SocialIcons'
 import { Wordmark } from '../ui/Wordmark'
@@ -108,7 +108,23 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
 
           <div className="shrink-0 bg-cream">
             <div className="container-x py-7">
-              <p className="eyebrow text-muted">Please reach out now</p>
+              <p className="eyebrow text-ember-600">Book now</p>
+              <ul className="mt-4 grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
+                {bookings.map((b) => (
+                  <li key={b.id}>
+                    <Link
+                      to={b.to}
+                      className="flex h-full items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 text-[0.92rem] leading-snug text-ink transition-colors active:bg-ember-50"
+                    >
+                      <b.icon className="size-4 shrink-0 text-ember-600" />
+                      <span className="flex-1">{b.label}</span>
+                      <ArrowUpRight className="size-3.5 shrink-0 text-line-strong" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="eyebrow mt-8 text-muted">Please reach out now</p>
               <div className="mt-4 flex flex-col gap-3 text-[1rem]">
                 <a href={contact.phoneHref} className="flex items-center gap-3 text-ink">
                   <Phone className="size-4 text-ember-600" /> {contact.phoneDisplay}
@@ -122,13 +138,6 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                 className="mt-5"
                 itemClassName="border-line-strong text-ink hover:bg-ink hover:text-white"
               />
-              <Link
-                to="/clarity-talks"
-                className="mt-6 flex items-center justify-between rounded-full bg-navy-950 px-6 py-4 text-sm font-semibold text-white"
-              >
-                Book a Personal Clarity Session
-                <ArrowUpRight className="size-4" />
-              </Link>
             </div>
           </div>
         </motion.div>

@@ -1,6 +1,7 @@
 import { ArrowUpRight, Check, Copy, Mail, Phone } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
+import { useSearchParams } from 'react-router-dom'
 import { NeedsList } from '../components/sections/NeedsList'
 import { PageHero } from '../components/ui/PageHero'
 import { Reveal } from '../components/ui/Reveal'
@@ -12,9 +13,21 @@ import { mailtoLink, whatsappLink } from '../lib/utils'
 const field =
   'w-full rounded-xl border border-line-strong bg-white px-4 py-3.5 text-[1rem] text-ink placeholder:text-muted/70 transition-colors focus:border-navy-900 focus:outline-none focus:ring-4 focus:ring-navy-100'
 
+/** "I need…" text for a ?need=<id> link (used by the "Book now" menu). */
+const needFromParam = (id: string | null) => needs.find((n) => n.id === id)?.need ?? needs[0].need
+
 export default function Contact() {
+  const [params] = useSearchParams()
+  const needParam = params.get('need')
   const [name, setName] = useState('')
-  const [need, setNeed] = useState(needs[0].need)
+  const [need, setNeed] = useState(() => needFromParam(needParam))
+
+  // a different booking link was followed while already on this page
+  const [lastParam, setLastParam] = useState(needParam)
+  if (lastParam !== needParam) {
+    setLastParam(needParam)
+    setNeed(needFromParam(needParam))
+  }
   const [message, setMessage] = useState('')
   const [copied, setCopied] = useState<string | null>(null)
 
@@ -117,10 +130,11 @@ export default function Contact() {
           {/* form */}
           <Reveal delay={0.1} className="lg:col-span-7">
             <form
+              id="message-form"
               onSubmit={sendWhatsapp}
               className="rounded-[2rem] border border-line bg-cream p-6 shadow-[0_40px_80px_-60px_rgba(11,23,54,0.5)] sm:p-10"
             >
-              <p className="eyebrow text-ember-600">Write a message</p>
+              <p className="eyebrow text-ember-600">{needParam ? 'Booking request' : 'Write a message'}</p>
               <h2 className="mt-3 text-[2rem] leading-tight font-normal md:text-[2.4rem]">
                 Tell us what you <em className="text-ember-600">need.</em>
               </h2>

@@ -1,33 +1,34 @@
 import { Link } from 'react-router-dom'
+import fullLight from '../../assets/img/logo-full-light.png'
+import markLight from '../../assets/img/logo-mark-light.png'
+import mark from '../../assets/img/logo-mark.png'
 import { cn } from '../../lib/utils'
 
-/** "Singer Afe Paul" typographic logo with an SAP monogram seal. */
-export function Wordmark({ tone = 'dark', className }: { tone?: 'dark' | 'light'; className?: string }) {
-  const light = tone === 'light'
+type Props = {
+  /** dark artwork for light backgrounds, light artwork for navy backgrounds */
+  tone?: 'dark' | 'light'
+  /** "mark" = monogram + CTw/SAP, "full" = also includes the tagline */
+  variant?: 'mark' | 'full'
+  className?: string
+}
+
+/** The CTw/SAP brand logo, linking home. */
+export function Wordmark({ tone = 'dark', variant = 'mark', className }: Props) {
+  const src = variant === 'full' ? fullLight : tone === 'light' ? markLight : mark
   return (
-    <Link to="/" className={cn('group flex items-center gap-3', className)} aria-label="Singer Afe Paul — home">
-      <span
+    <Link
+      to="/"
+      className={cn('group inline-flex shrink-0 items-center', className)}
+      aria-label="Singer Afe Paul — home"
+    >
+      <img
+        src={src}
+        alt="CTw/SAP — Clarity Talks with Singer Afe Paul"
         className={cn(
-          'relative flex size-11 shrink-0 items-center justify-center rounded-full font-serif text-[0.9rem] tracking-[0.04em] transition-transform duration-500 group-hover:rotate-[8deg]',
-          light ? 'bg-white text-navy-950' : 'bg-navy-950 text-white',
+          'w-auto transition-transform duration-500 ease-[var(--ease-editorial)] group-hover:scale-[1.04]',
+          variant === 'full' ? 'h-28 md:h-32' : 'h-12 sm:h-14 lg:h-16',
         )}
-      >
-        <span className="absolute inset-[3px] rounded-full border border-ember-400/70" />
-        S<span className="text-ember-400">A</span>P
-      </span>
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            'font-serif text-[1.2rem] font-medium tracking-[-0.01em] sm:text-[1.3rem]',
-            light ? 'text-white' : 'text-ink',
-          )}
-        >
-          Singer Afe <span className="text-ember-600 italic">Paul</span>
-        </span>
-        <span className={cn('eyebrow mt-1 !text-[0.58rem]', light ? 'text-white/55' : 'text-muted')}>
-          A one-stop junction for music
-        </span>
-      </span>
+      />
     </Link>
   )
 }

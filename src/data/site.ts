@@ -159,6 +159,24 @@ export const needs: Need[] = [
 ]
 
 /* ------------------------------------------------------------------ */
+/*  Booking — everything a visitor can book from the "Book now" menu   */
+/* ------------------------------------------------------------------ */
+export type Booking = { id: string; label: string; hint: string; icon: LucideIcon; to: string }
+
+/** `to` opens the contact form with the matching "I need…" option pre-selected. */
+const bookFor = (needId: string) => `/contact?need=${needId}#message-form`
+
+export const bookings: Booking[] = [
+  { id: 'clarity', label: 'Personal Clarity Session', hint: 'Virtual or in person · see prices', icon: Compass, to: '/clarity-talks#plans' },
+  { id: 'learn', label: 'Music lessons', hint: 'Voice, violin & music theory', icon: GraduationCap, to: bookFor('learn') },
+  { id: 'choir', label: 'Choir training', hint: 'Clinics, rehearsals & vocal technique', icon: Users, to: bookFor('choir') },
+  { id: 'perform', label: 'Ministration / performance', hint: 'Singers & instrumentalists for your event', icon: MicVocal, to: bookFor('perform') },
+  { id: 'plan-event', label: 'Event planning & consultancy', hint: 'Plan a musical event that works', icon: CalendarDays, to: bookFor('plan-event') },
+  { id: 'career', label: 'Music career guidance', hint: 'Start or grow your music career', icon: Rocket, to: bookFor('career') },
+  { id: 'research', label: 'Research mentorship', hint: 'Guidance for music researchers', icon: BookOpenText, to: bookFor('research') },
+]
+
+/* ------------------------------------------------------------------ */
 /*  Navigation                                                         */
 /* ------------------------------------------------------------------ */
 export type Shade = {

@@ -18,7 +18,7 @@ export function Footer() {
       <div className="container-x pt-16 md:pt-20">
         <div className="grid gap-12 border-b border-white/10 pb-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Wordmark tone="light" />
+            <Wordmark tone="light" variant="full" className="origin-left" />
             <p className="mt-6 max-w-md leading-relaxed">
               Meaningful music, healthy musicianship, impactful music education, gospel music research and music
               consultancy — with integrity at the core.

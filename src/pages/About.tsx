@@ -1,6 +1,7 @@
 import { HeartHandshake, Lightbulb, Microscope, MicVocal, Music2 } from 'lucide-react'
 import { FaLinkedinIn } from 'react-icons/fa6'
 import portrait from '../assets/img/afe-paul-portrait-web.jpg'
+import monogram from '../assets/img/monogram-light.png'
 import { ContactCTA } from '../components/sections/ContactCTA'
 import { Button } from '../components/ui/Button'
 import { PageHero } from '../components/ui/PageHero'
@@ -39,7 +40,7 @@ export default function About() {
             <p className="eyebrow mt-8 text-right !text-[0.58rem] text-muted">Photo · King David</p>
             <div className="absolute -bottom-6 -left-6">
               <RotatingBadge text="Aduragbemi • Paul • Afe • " className="size-28 bg-ember-600 text-white shadow-xl">
-                <span className="font-serif text-lg">APA</span>
+                <img src={monogram} alt="" className="h-11 w-auto" />
               </RotatingBadge>
             </div>
           </div>

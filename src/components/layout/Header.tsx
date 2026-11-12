@@ -5,6 +5,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { shades } from '../../data/site'
 import { cn } from '../../lib/utils'
 import { Wordmark } from '../ui/Wordmark'
+import { BookMenu } from './BookMenu'
 import { MobileMenu } from './MobileMenu'
 
 const navItem =
@@ -34,12 +35,25 @@ export function Header() {
     setMobileOpen(false)
   }
 
+  // hover opens the menu; the click that follows a hover must not close it again
+  const shadesHoverOpened = useRef(false)
   const openShades = () => {
     window.clearTimeout(closeTimer.current)
+    if (!shadesOpen) shadesHoverOpened.current = true
     setShadesOpen(true)
   }
   const closeShadesSoon = () => {
-    closeTimer.current = window.setTimeout(() => setShadesOpen(false), 140)
+    closeTimer.current = window.setTimeout(() => {
+      shadesHoverOpened.current = false
+      setShadesOpen(false)
+    }, 140)
+  }
+  const toggleShades = () => {
+    if (shadesHoverOpened.current) {
+      shadesHoverOpened.current = false
+      return
+    }
+    setShadesOpen((o) => !o)
   }
 
   const shadeActive = shades.some((s) => location.pathname.startsWith(s.to))
@@ -84,7 +98,7 @@ export function Header() {
                 className={cn(navItem, 'gap-1.5', (shadesOpen || shadeActive) && 'text-ink')}
                 aria-expanded={shadesOpen}
                 aria-controls="shades-menu"
-                onClick={() => setShadesOpen((o) => !o)}
+                onClick={toggleShades}
               >
                 Other Shades
                 <ChevronDown className={cn('size-3.5 transition-transform duration-300', shadesOpen && 'rotate-180')} />
@@ -157,15 +171,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              to="/clarity-talks"
-              className="group hidden items-center gap-2 rounded-full bg-navy-950 py-2.5 pr-2.5 pl-5 text-[0.9rem] font-medium text-white transition-colors hover:bg-ember-600 sm:inline-flex"
-            >
-              Book a session
-              <span className="flex size-7 items-center justify-center rounded-full bg-ember-600 transition-colors group-hover:bg-white group-hover:text-ember-600">
-                <ArrowUpRight className="size-3.5" />
-              </span>
-            </Link>
+            <BookMenu />
             <button
               type="button"
               onClick={() => setMobileOpen(true)}

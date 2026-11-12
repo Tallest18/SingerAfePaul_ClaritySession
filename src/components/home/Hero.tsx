@@ -2,6 +2,7 @@ import { ArrowDown, Play } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import portrait from '../../assets/img/afe-paul-portrait-web.jpg'
+import monogram from '../../assets/img/monogram-light.png'
 import { contact, featuredRelease } from '../../data/site'
 import { Button } from '../ui/Button'
 import { SplitWords } from '../ui/Reveal'
@@ -121,9 +122,7 @@ export function Hero() {
               text="Singer Afe Paul • Meaningful Music • "
               className="size-28 bg-navy-950 text-white shadow-xl sm:size-32"
             >
-              <span className="font-serif text-lg">
-                S<span className="text-ember-400">A</span>P
-              </span>
+              <img src={monogram} alt="" className="h-11 w-auto sm:h-12" />
             </RotatingBadge>
           </div>
 

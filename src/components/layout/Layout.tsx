@@ -28,14 +28,21 @@ function ScrollManager() {
 
   useEffect(() => {
     if (!hash) return
-    // wait for the page transition to mount the target
-    const t = window.setTimeout(() => {
+    // The target may not exist yet: the old page is still fading out and the new
+    // page may be lazy-loading. Poll for it (up to ~4s), then scroll.
+    let tries = 0
+    let timer = 0
+    const attempt = () => {
       const el = document.querySelector<HTMLElement>(hash)
-      if (!el) return
-      if (lenis) lenis.scrollTo(el, { offset: -90, duration: 1.4 })
-      else el.scrollIntoView({ behavior: 'smooth' })
-    }, 450)
-    return () => window.clearTimeout(t)
+      if (el) {
+        if (lenis) lenis.scrollTo(el, { offset: -90, duration: 1.2, force: true })
+        else el.scrollIntoView({ behavior: 'smooth' })
+        return
+      }
+      if (++tries < 40) timer = window.setTimeout(attempt, 100)
+    }
+    timer = window.setTimeout(attempt, 120)
+    return () => window.clearTimeout(timer)
   }, [pathname, hash, lenis])
 
   return null
