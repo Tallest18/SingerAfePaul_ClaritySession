@@ -1,15 +1,15 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/fraunces/opsz.css';
-@import '@fontsource-variable/fraunces/opsz-italic.css';
-@import '@fontsource-variable/jost';
+@import '@fontsource-variable/montserrat';
 @import 'lenis/dist/lenis.css';
 
 /* ------------------------------------------------------------------ */
 /*  Brand tokens — navy blue + burnt orange on white                   */
 /* ------------------------------------------------------------------ */
 @theme {
-  --font-sans: 'Jost Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Fraunces Variable', ui-serif, Georgia, 'Times New Roman', serif;
+  /* One typeface everywhere (matches the logo). "serif" is kept as an alias
+     so older class names still resolve to the same family. */
+  --font-sans: 'Montserrat Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Montserrat Variable', ui-sans-serif, system-ui, sans-serif;
 
   /* neutrals */
   --color-paper: #ffffff;
@@ -45,15 +45,27 @@
   --color-ember-700: #a0430a;
   --color-ember-800: #80360e;
 
-  --text-display: clamp(2.75rem, 1.4rem + 5.4vw, 6.4rem);
-  --text-display--line-height: 0.98;
-  --text-display--letter-spacing: -0.035em;
+  --text-display: clamp(2.2rem, 1.1rem + 3.2vw, 3.6rem);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.03em;
 
   --ease-editorial: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   --animate-marquee: marquee 38s linear infinite;
   --animate-spin-slow: spin 24s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-page-in: page-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
   @keyframes marquee {
     from {
@@ -97,10 +109,18 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--color-ink);
-    font-optical-sizing: auto;
     text-wrap: balance;
+  }
+
+  /* No italics anywhere: emphasis is shown with colour only, consistently. */
+  em,
+  i,
+  cite {
+    font-style: normal;
   }
 
   p {
@@ -151,6 +171,16 @@
   font-size: 0.72rem;
   font-weight: 600;
   line-height: 1.4;
+}
+
+/* Section labels ("01 —— The Narrative", "The Intention", …): one size everywhere. */
+@utility section-label {
+  font-family: var(--font-sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: clamp(1.05rem, 0.85rem + 0.7vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 @utility link-draw {

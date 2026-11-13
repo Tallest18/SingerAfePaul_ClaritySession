@@ -17,12 +17,12 @@ export function Narrative() {
               eyebrow="The Narrative"
               title={
                 <>
-                  A music brand with <em className="text-ember-600">integrity</em> at its core.
+                  A music brand with <span className="text-ember-600">integrity</span> at its core.
                 </>
               }
             />
             <Reveal delay={0.1}>
-              <blockquote className="mt-10 border-l-2 border-ember-500 pl-6 font-serif text-xl leading-relaxed text-navy-800 italic">
+              <blockquote className="mt-10 border-l-2 border-ember-500 pl-6 font-serif text-xl leading-relaxed text-navy-800">
                 “{narrative.identity}”
               </blockquote>
               <Link
@@ -55,7 +55,7 @@ export function Narrative() {
                 </span>
                 <div className="relative">
                   <p className="eyebrow text-ember-300">07 · The foundation</p>
-                  <h3 className="mt-2 text-[1.7rem] leading-tight font-normal !text-white">{last.title}</h3>
+                  <h3 className="mt-2 text-[1.7rem] leading-tight font-bold !text-white">{last.title}</h3>
                   <p className="mt-1 text-white/70">{last.text}</p>
                 </div>
               </div>
@@ -81,7 +81,7 @@ function PillarCard({ index, title, text, icon: Icon }: { index: number; title: 
         </span>
         <span className="font-serif text-sm text-line-strong">0{index}</span>
       </div>
-      <h3 className="mt-6 text-[1.35rem] leading-snug font-normal">{title}</h3>
+      <h3 className="mt-6 text-[1.35rem] leading-snug font-bold">{title}</h3>
       <p className="mt-2 text-[0.98rem] leading-relaxed text-muted">{text}</p>
       <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-ember-600 transition-transform duration-500 group-hover:scale-x-100" />
     </div>

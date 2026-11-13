@@ -84,10 +84,10 @@ export default function Music() {
         <div className="container-x grid items-center gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading
-              eyebrow={`New release · ${featuredRelease.year}`}
+              eyebrow={`${featuredRelease.label} · ${featuredRelease.year}`}
               title={
                 <>
-                  {featuredRelease.title} <em className="text-ember-600">{featuredRelease.credit}</em>
+                  {featuredRelease.title} <span className="text-ember-600">{featuredRelease.credit}</span>
                 </>
               }
               intro={featuredRelease.blurb}
@@ -151,7 +151,7 @@ export default function Music() {
               eyebrow="The album"
               title={
                 <>
-                  Lord of <em className="text-ember-300">Christmas.</em>
+                  Lord of <span className="text-ember-300">Christmas.</span>
                 </>
               }
               intro={album.blurb}
@@ -190,7 +190,7 @@ export default function Music() {
             eyebrow="The collection"
             title={
               <>
-                Watch &amp; <em className="text-ember-600">listen.</em>
+                Watch &amp; <span className="text-ember-600">listen.</span>
               </>
             }
             intro="Originals, the #oldskool gospel series, Christmas songs, covers and more — straight from the YouTube channel."

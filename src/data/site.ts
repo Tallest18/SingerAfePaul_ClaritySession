@@ -44,11 +44,14 @@ export const socials: { key: SocialKey; label: string; href: string; handle: str
 
 export const youtubeChannel = 'https://youtube.com/@singerafepaul01'
 
+/** Google Form used to book a Personal Clarity Session. */
+export const clarityBookingUrl = 'https://forms.gle/GR9e3KxShGuf7u6m6'
+
 /* ------------------------------------------------------------------ */
 /*  Brand story                                                        */
 /* ------------------------------------------------------------------ */
 export const narrative = {
-  lead: 'Singer Afe Paul is a music brand known for meaningful music, healthy musicianship, impactful music education, seasoned social research with the intersection of gospel music, value-first approach to service, music consultancy and integrity at its core.',
+  lead: 'Singer Afe Paul is a music brand known for meaningful music, healthy musicianship, quality music education, seasoned social research with the intersection of gospel music, value-first approach to service, music consultancy and integrity at its core.',
   identity:
     'Singer Afe Paul shares a very close identity with Aduragbemi Paul Afe, who spearheads the brand.',
   intention:
@@ -63,10 +66,10 @@ export type Pillar = { title: string; text: string; icon: LucideIcon }
 export const pillars: Pillar[] = [
   { title: 'Meaningful music', text: 'Songs written and sung to reach the heart, not just the ear.', icon: Music2 },
   { title: 'Healthy musicianship', text: 'Skill, character and wellbeing growing together.', icon: Sprout },
-  { title: 'Impactful music education', text: 'Voice, violin and theory taught with clarity and care.', icon: GraduationCap },
+  { title: 'Quality music education', text: 'Voice, violin and theory taught with clarity and care.', icon: GraduationCap },
   { title: 'Gospel music research', text: 'Seasoned social research where gospel music meets everyday life.', icon: Microscope },
   { title: 'Value-first service', text: 'Every engagement starts with what truly serves you.', icon: HandHeart },
-  { title: 'Music consultancy', text: 'Practical counsel for events, ministries and music projects.', icon: Lightbulb },
+  { title: 'Music consultancy', text: 'Practical counsel for events, personal ministries and music projects.', icon: Lightbulb },
   { title: 'Integrity at the core', text: 'Honest work, kept promises and a clean conscience.', icon: ShieldCheck },
 ]
 
@@ -153,7 +156,7 @@ export const needs: Need[] = [
     answer: 'Personal Clarity Session',
     text: 'Untangle decisions about life, purpose, career, ministry or music in a focused one-on-one session.',
     icon: Compass,
-    to: '/clarity-talks',
+    to: clarityBookingUrl,
     toLabel: 'Book a session',
   },
 ]
@@ -163,11 +166,14 @@ export const needs: Need[] = [
 /* ------------------------------------------------------------------ */
 export type Booking = { id: string; label: string; hint: string; icon: LucideIcon; to: string }
 
-/** `to` opens the contact form with the matching "I need…" option pre-selected. */
+/**
+ * `to` opens the contact form with the matching "I need…" option pre-selected.
+ * Clarity Sessions are booked through their own Google Form (opens in a new tab).
+ */
 const bookFor = (needId: string) => `/contact?need=${needId}#message-form`
 
 export const bookings: Booking[] = [
-  { id: 'clarity', label: 'Personal Clarity Session', hint: 'Virtual or in person · see prices', icon: Compass, to: '/clarity-talks#plans' },
+  { id: 'clarity', label: 'Personal Clarity Session', hint: 'Virtual or in person · booking form', icon: Compass, to: clarityBookingUrl },
   { id: 'learn', label: 'Music lessons', hint: 'Voice, violin & music theory', icon: GraduationCap, to: bookFor('learn') },
   { id: 'choir', label: 'Choir training', hint: 'Clinics, rehearsals & vocal technique', icon: Users, to: bookFor('choir') },
   { id: 'perform', label: 'Ministration / performance', hint: 'Singers & instrumentalists for your event', icon: MicVocal, to: bookFor('perform') },
@@ -269,8 +275,8 @@ export const plans: Plan[] = [
 ]
 
 export const claritySteps = [
-  { title: 'Reach out', text: 'Send a message on WhatsApp, email or any social platform — @singer_afe_paul.' },
   { title: 'Choose your diet', text: 'Pick the hourly, one-month, three-month or physical option that fits your season.' },
+  { title: 'Fill the booking form', text: 'Tell us a little about yourself in the short booking form — or reach out on WhatsApp.' },
   { title: 'Book a time', text: 'Agree on a date and time that works for you, online or in person.' },
   { title: 'Talk & gain clarity', text: 'Speak freely, think clearly and leave with your next steps in view.' },
 ]
@@ -310,14 +316,29 @@ export type Video = {
   tag: 'Original' | 'Lord of Christmas' | '#oldskool' | 'Covers & more'
 }
 
-export const featuredRelease: Video & { lyricId: string; year: string; blurb: string } = {
+export type FeaturedRelease = Video & {
+  lyricId: string
+  year: string
+  /** small label above the title, e.g. "Featured single" or "New release" */
+  label: string
+  blurb: string
+  /**
+   * Optional MP3 to play right on the page (hero player). Put the file in
+   * `public/audio/` and set e.g. '/audio/my-song.mp3'. Without it, the hero
+   * player opens a small YouTube player in place instead.
+   */
+  audioSrc?: string
+}
+
+export const featuredRelease: FeaturedRelease = {
   id: 'iFceLFafr3Q',
   lyricId: 'Mc9wPcdMrgM',
   title: 'Nature Song',
   credit: 'ft. Timothy Demo',
   tag: 'Original',
   year: '2024',
-  blurb: 'A new release produced by Masters’ Piece Studios — available with an official lyric video.',
+  label: 'Featured single',
+  blurb: 'Produced by Masters’ Piece Studios — available with an official lyric video.',
 }
 
 export const album = {

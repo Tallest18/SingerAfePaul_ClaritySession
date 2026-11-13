@@ -20,7 +20,7 @@ export function Footer() {
           <div className="lg:col-span-5">
             <Wordmark tone="light" variant="full" className="origin-left" />
             <p className="mt-6 max-w-md leading-relaxed">
-              Meaningful music, healthy musicianship, impactful music education, gospel music research and music
+              Meaningful music, healthy musicianship, quality music education, gospel music research and music
               consultancy — with integrity at the core.
             </p>
             <SocialIcons
@@ -54,7 +54,8 @@ export function Footer() {
               <li>
                 <a href={`mailto:${contact.email}`} className="flex items-start gap-3 hover:text-white">
                   <Mail className="mt-1 size-4 shrink-0 text-ember-400" />
-                  <span className="link-draw break-all">{contact.email}</span>
+                  {/* zero-width space lets the email wrap before the @ instead of mid-word */}
+                  <span className="link-draw">{contact.email.replace('@', '\u200b@')}</span>
                 </a>
               </li>
               <li>
@@ -92,7 +93,7 @@ export function Footer() {
 
       {/* oversized outline wordmark */}
       <div aria-hidden className="pointer-events-none -mb-[0.22em] overflow-hidden text-center select-none">
-        <p className="text-outline font-serif text-[15.5vw] leading-[0.9] font-medium tracking-[-0.04em] whitespace-nowrap text-white/25">
+        <p className="text-[10.8vw] leading-[0.9] font-extrabold tracking-[-0.04em] whitespace-nowrap text-white/[0.06]">
           Singer Afe Paul
         </p>
       </div>

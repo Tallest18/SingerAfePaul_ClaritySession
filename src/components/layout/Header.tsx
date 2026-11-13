@@ -120,7 +120,7 @@ export function Header() {
                         <div>
                           <p className="eyebrow text-ember-300">Featured</p>
                           <p className="mt-3 font-serif text-[1.45rem] leading-snug">
-                            Need clarity? Book a <em className="text-ember-300">Personal Clarity Session.</em>
+                            Need clarity? Book a <span className="text-ember-300">Personal Clarity Session.</span>
                           </p>
                         </div>
                         <Link

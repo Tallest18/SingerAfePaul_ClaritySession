@@ -34,7 +34,7 @@ export function VideoCard({ video, className, large = false }: { video: Video; c
         </span>
       </div>
       <div className="mt-4">
-        <h3 className={cn('leading-snug font-normal transition-colors group-hover:text-ember-700', large ? 'text-2xl' : 'text-[1.25rem]')}>
+        <h3 className={cn('leading-snug font-bold transition-colors group-hover:text-ember-700', large ? 'text-2xl' : 'text-[1.25rem]')}>
           {video.title}
         </h3>
         {video.credit && <p className="mt-1 text-[0.9rem] text-muted">{video.credit}</p>}

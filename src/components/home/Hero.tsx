@@ -1,20 +1,19 @@
-import { ArrowDown, Play } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import portrait from '../../assets/img/afe-paul-portrait-web.jpg'
-import monogram from '../../assets/img/monogram-light.png'
+import brandIcon from '../../assets/img/brand-icon-light.webp'
 import { contact, featuredRelease } from '../../data/site'
 import { Button } from '../ui/Button'
 import { SplitWords } from '../ui/Reveal'
 import { RotatingBadge } from '../ui/RotatingBadge'
 import { SocialIcons } from '../ui/SocialIcons'
-import { useVideoPlayer } from '../video/context'
+import { InlinePlayer } from '../video/InlinePlayer'
 
 const ease = [0.2, 0.7, 0.2, 1] as const
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
-  const play = useVideoPlayer()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const imgY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%'])
   const frameY = useTransform(scrollYProgress, [0, 1], ['0%', '-6%'])
@@ -36,17 +35,17 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease }}
-            className="eyebrow flex items-center gap-3 text-ember-600"
+            className="section-label flex items-start gap-4 text-ember-600"
           >
-            <span className="h-px w-10 bg-ember-500" />
-            Singer Afe Paul · A music brand
+            <span aria-hidden className="mt-[0.62em] h-[2px] w-10 shrink-0 bg-ember-500/60 md:w-14" />
+            <span>Singer Afe Paul · Wholesome Musicianship</span>
           </motion.p>
 
-          <h1 className="mt-7 text-display font-normal">
+          <h1 className="mt-7 text-display font-extrabold">
             <SplitWords text="Meaningful music." className="block" delay={0.1} />
             <span className="block">
               <SplitWords text="Wholesome" delay={0.3} />{' '}
-              <SplitWords text="musicianship." delay={0.4} className="text-ember-600 italic" />
+              <SplitWords text="musicianship." delay={0.4} className="text-ember-600" />
             </span>
           </h1>
 
@@ -122,35 +121,14 @@ export function Hero() {
               text="Singer Afe Paul • Meaningful Music • "
               className="size-28 bg-navy-950 text-white shadow-xl sm:size-32"
             >
-              <img src={monogram} alt="" className="h-11 w-auto sm:h-12" />
+              <img src={brandIcon} alt="" className="h-12 w-auto sm:h-14" />
             </RotatingBadge>
           </div>
 
-          {/* now playing card */}
-          <button
-            type="button"
-            onClick={() => play(featuredRelease)}
-            className="group absolute -bottom-6 left-4 flex animate-float items-center gap-4 rounded-2xl border border-white/60 bg-white/90 p-3 pr-6 text-left shadow-[0_24px_50px_-24px_rgba(11,23,54,0.5)] backdrop-blur-xl sm:-left-10"
-          >
-            <span className="flex size-12 items-center justify-center rounded-xl bg-ember-600 text-white transition-transform group-hover:scale-105">
-              <Play className="size-5 translate-x-[1px] fill-current" />
-            </span>
-            <span>
-              <span className="eyebrow block !text-[0.6rem] text-ember-600">New release · {featuredRelease.year}</span>
-              <span className="mt-0.5 block font-serif text-lg leading-tight text-ink">{featuredRelease.title}</span>
-              <span className="block text-[0.8rem] text-muted">{featuredRelease.credit}</span>
-            </span>
-            <span className="ml-1 hidden items-end gap-[3px] sm:flex" aria-hidden>
-              {[0.6, 1, 0.45, 0.8].map((h, i) => (
-                <motion.span
-                  key={i}
-                  className="w-[3px] rounded-full bg-ember-500"
-                  animate={{ height: [`${h * 18}px`, `${(1 - h) * 18 + 4}px`, `${h * 18}px`] }}
-                  transition={{ duration: 1.1 + i * 0.15, repeat: Infinity, ease: 'easeInOut' }}
-                />
-              ))}
-            </span>
-          </button>
+          {/* in-place music player (plays right here — no pop-up, no new page) */}
+          <div className="absolute -bottom-6 left-4 z-10 sm:-left-10">
+            <InlinePlayer release={featuredRelease} />
+          </div>
         </motion.div>
       </div>
     </section>

@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom'
-import fullLight from '../../assets/img/logo-full-light.png'
-import markLight from '../../assets/img/logo-mark-light.png'
-import mark from '../../assets/img/logo-mark.png'
+import logoLight from '../../assets/img/brand-logo-light.webp'
+import wordmarkLight from '../../assets/img/brand-wordmark-light.webp'
+import wordmark from '../../assets/img/brand-wordmark.webp'
 import { cn } from '../../lib/utils'
 
 type Props = {
   /** dark artwork for light backgrounds, light artwork for navy backgrounds */
   tone?: 'dark' | 'light'
-  /** "mark" = monogram + CTw/SAP, "full" = also includes the tagline */
-  variant?: 'mark' | 'full'
+  /** "wordmark" = SINGERAFEPAUL lettering + swoosh (header), "full" = with the microphone (footer) */
+  variant?: 'wordmark' | 'full'
   className?: string
 }
 
-/** The CTw/SAP brand logo, linking home. */
-export function Wordmark({ tone = 'dark', variant = 'mark', className }: Props) {
-  const src = variant === 'full' ? fullLight : tone === 'light' ? markLight : mark
+/** The SingerAfePaul brand logo, linking home. (Clarity Talks has its own logo on its page.) */
+export function Wordmark({ tone = 'dark', variant = 'wordmark', className }: Props) {
+  const src = variant === 'full' ? logoLight : tone === 'light' ? wordmarkLight : wordmark
   return (
     <Link
       to="/"
@@ -23,10 +23,10 @@ export function Wordmark({ tone = 'dark', variant = 'mark', className }: Props) 
     >
       <img
         src={src}
-        alt="CTw/SAP — Clarity Talks with Singer Afe Paul"
+        alt="SingerAfePaul"
         className={cn(
-          'w-auto transition-transform duration-500 ease-[var(--ease-editorial)] group-hover:scale-[1.04]',
-          variant === 'full' ? 'h-28 md:h-32' : 'h-12 sm:h-14 lg:h-16',
+          'w-auto transition-transform duration-500 ease-[var(--ease-editorial)] group-hover:scale-[1.03]',
+          variant === 'full' ? 'h-32 md:h-36' : 'h-9 sm:h-10 lg:h-11',
         )}
       />
     </Link>

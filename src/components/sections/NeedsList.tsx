@@ -2,7 +2,7 @@ import { ArrowRight, Mail, Plus } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { SmartLink } from '../ui/SmartLink'
 import { needs } from '../../data/site'
 import { cn, mailtoLink, whatsappLink } from '../../lib/utils'
 
@@ -106,13 +106,13 @@ export function NeedsList({ defaultOpen = null }: { defaultOpen?: string | null 
                         <Mail className="size-4" /> Email
                       </a>
                       {n.to && (
-                        <Link
+                        <SmartLink
                           to={n.to}
                           className="group inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-navy-800 hover:text-ember-700"
                         >
                           <span className="link-draw">{n.toLabel}</span>
                           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
+                        </SmartLink>
                       )}
                     </div>
                   </div>

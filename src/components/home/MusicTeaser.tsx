@@ -16,7 +16,7 @@ export function MusicTeaser() {
             eyebrow="Tracks & Albums"
             title={
               <>
-                Music that <em className="text-ember-600">sings to the heart.</em>
+                Music that <span className="text-ember-600">sings to the heart.</span>
               </>
             }
           />

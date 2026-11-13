@@ -135,8 +135,8 @@ export default function Contact() {
               className="rounded-[2rem] border border-line bg-cream p-6 shadow-[0_40px_80px_-60px_rgba(11,23,54,0.5)] sm:p-10"
             >
               <p className="eyebrow text-ember-600">{needParam ? 'Booking request' : 'Write a message'}</p>
-              <h2 className="mt-3 text-[2rem] leading-tight font-normal md:text-[2.4rem]">
-                Tell us what you <em className="text-ember-600">need.</em>
+              <h2 className="mt-3 text-[2rem] leading-tight font-bold md:text-[2.4rem]">
+                Tell us what you <span className="text-ember-600">need.</span>
               </h2>
 
               <div className="mt-8 grid gap-5">
@@ -194,7 +194,7 @@ export default function Contact() {
             eyebrow="Not sure where to start?"
             title={
               <>
-                Pick the need that <em className="text-ember-600">sounds like you.</em>
+                Pick the need that <span className="text-ember-600">sounds like you.</span>
               </>
             }
           />

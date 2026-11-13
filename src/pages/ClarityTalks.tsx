@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Check, Clock, Coffee, MapPin, MessageSquareQuote, Quote, Video } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, CalendarCheck, Check, Clock, Coffee, MapPin, MessageSquareQuote, Quote, Video } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import flyer from '../assets/img/clarity-talks-flyer.jpg'
 import logo from '../assets/img/clarity-talks-logo.png'
@@ -8,7 +8,7 @@ import { Button } from '../components/ui/Button'
 import { PageHero } from '../components/ui/PageHero'
 import { Reveal, RevealGroup, RevealItem } from '../components/ui/Reveal'
 import { SectionHeading } from '../components/ui/SectionHeading'
-import { claritySteps, contact, plans, reviews, socials } from '../data/site'
+import { clarityBookingUrl, claritySteps, contact, plans, reviews, socials } from '../data/site'
 import { cn, mailtoLink, whatsappLink } from '../lib/utils'
 
 const topics = ['Life & direction', 'Purpose & calling', 'Career decisions', 'Your music journey', 'Ministry & service', 'Whatever is on your mind']
@@ -37,14 +37,18 @@ export default function ClarityTalks() {
         }
       >
         <div className="flex flex-wrap gap-4">
-          <Button
-            href={whatsappLink("Hello Singer Afe Paul, I'd like to book a Personal Clarity Session.")}
-            icon={<FaWhatsapp className="size-4" />}
-          >
-            Book on WhatsApp
+          <Button href={clarityBookingUrl} icon={<CalendarCheck className="size-4" />}>
+            Book a session
           </Button>
           <Button to="/clarity-talks#plans" variant="outline" icon={<ArrowDown className="size-4" />}>
             See the plans
+          </Button>
+          <Button
+            href={whatsappLink("Hello Singer Afe Paul, I have a question about Clarity Talks.")}
+            variant="outline"
+            icon={<FaWhatsapp className="size-4" />}
+          >
+            Ask on WhatsApp
           </Button>
         </div>
       </PageHero>
@@ -69,7 +73,7 @@ export default function ClarityTalks() {
               eyebrow="What is a clarity session?"
               title={
                 <>
-                  Sometimes you just <em className="text-ember-600">need to talk.</em>
+                  Sometimes you just <span className="text-ember-600">need to talk.</span>
                 </>
               }
               intro="A Personal Clarity Session is a safe, confidential, one-on-one conversation. You speak freely; together you untangle the noise, ask better questions and leave with your next step in view."
@@ -100,7 +104,7 @@ export default function ClarityTalks() {
               eyebrow="Services"
               title={
                 <>
-                  Choose your <em className="text-ember-300">diet.</em>
+                  Choose your <span className="text-ember-300">diet.</span>
                 </>
               }
               intro="Four ways to take your seat — pick the rhythm that suits your season."
@@ -130,7 +134,7 @@ export default function ClarityTalks() {
                     {(p.id === 'one-month' || p.id === 'three-months') && <Clock className="size-4" />}
                     {p.detail}
                   </div>
-                  <h3 className="mt-4 text-[1.6rem] leading-tight font-normal !text-white">{p.name}</h3>
+                  <h3 className="mt-4 text-[1.6rem] leading-tight font-bold !text-white">{p.name}</h3>
                   <p className="mt-5 font-serif text-[2.6rem] leading-none">
                     {p.price}
                     {p.unit && <span className="ml-1.5 font-sans text-sm text-white/70">{p.unit}</span>}
@@ -151,7 +155,7 @@ export default function ClarityTalks() {
                     ))}
                   </ul>
                   <a
-                    href={whatsappLink(`Hello Singer Afe Paul, I'd like to book the ${p.name} (Clarity Talks).`)}
+                    href={clarityBookingUrl}
                     target="_blank"
                     rel="noreferrer"
                     className={cn(
@@ -159,7 +163,7 @@ export default function ClarityTalks() {
                       p.featured ? 'bg-white text-ember-700 hover:bg-navy-950 hover:text-white' : 'bg-white/10 text-white hover:bg-white hover:text-navy-950',
                     )}
                   >
-                    {p.id === 'physical' ? 'Start the conversation' : 'Book this diet'}
+                    {p.id === 'physical' ? 'Book & negotiate' : 'Book this diet'}
                     <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </div>
@@ -177,7 +181,7 @@ export default function ClarityTalks() {
             eyebrow="How it works"
             title={
               <>
-                Four steps to <em className="text-ember-600">clarity.</em>
+                Four steps to <span className="text-ember-600">clarity.</span>
               </>
             }
           />
@@ -188,7 +192,7 @@ export default function ClarityTalks() {
                 <span className="relative mx-auto flex size-14 items-center justify-center rounded-full border border-line bg-white font-serif text-xl text-ember-600 shadow-sm">
                   {i + 1}
                 </span>
-                <h3 className="mt-6 text-[1.4rem] font-normal">{s.title}</h3>
+                <h3 className="mt-6 text-[1.4rem] font-bold">{s.title}</h3>
                 <p className="mx-auto mt-2 max-w-[16rem] text-[0.98rem] leading-relaxed text-muted">{s.text}</p>
               </RevealItem>
             ))}
@@ -204,7 +208,7 @@ export default function ClarityTalks() {
               eyebrow="Reviews"
               title={
                 <>
-                  What people <em className="text-ember-600">say.</em>
+                  What people <span className="text-ember-600">say.</span>
                 </>
               }
             />
@@ -249,7 +253,7 @@ export default function ClarityTalks() {
               eyebrow="Links"
               title={
                 <>
-                  Stay close to <em className="text-ember-600">the conversation.</em>
+                  Stay close to <span className="text-ember-600">the conversation.</span>
                 </>
               }
               intro={

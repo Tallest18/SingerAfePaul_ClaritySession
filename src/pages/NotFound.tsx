@@ -9,8 +9,8 @@ export default function NotFound() {
       <div className="container-x relative text-center">
         <title>Page not found — Singer Afe Paul</title>
         <p className="eyebrow text-ember-600">404 · Off key</p>
-        <h1 className="mt-6 text-display font-normal">
-          <SplitWords text="This note" /> <SplitWords text="isn’t on the staff." delay={0.15} className="text-ember-600 italic" />
+        <h1 className="mt-6 text-display font-extrabold">
+          <SplitWords text="This note" /> <SplitWords text="isn’t on the staff." delay={0.15} className="text-ember-600" />
         </h1>
         <p className="mx-auto mt-8 max-w-lg text-lg text-muted">The page you’re looking for has moved or never existed.</p>
         <div className="mt-10 flex justify-center">

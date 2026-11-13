@@ -27,11 +27,11 @@ export function ContactCTA({ title = 'Please reach out', accent = 'now.' }: { ti
               </p>
             </Reveal>
             <Reveal>
-              <h2 className="mt-6 text-[clamp(3rem,1.5rem+7vw,8rem)] leading-[0.95] font-normal tracking-[-0.04em]">
+              <h2 className="mt-6 text-[clamp(2.6rem,1.3rem+5vw,6rem)] leading-[1] font-bold tracking-[-0.04em]">
                 {title}{' '}
-                <em className="text-ember-600">
+                <span className="text-ember-600">
                   <SplitWords text={accent} />
-                </em>
+                </span>
               </h2>
             </Reveal>
           </div>
@@ -60,7 +60,7 @@ export function ContactCTA({ title = 'Please reach out', accent = 'now.' }: { ti
                   <span className="eyebrow block text-muted transition-colors group-hover:text-ember-300">{c.label}</span>
                   <span className="mt-1 block font-serif text-[1.1rem] text-ink transition-colors group-hover:text-white xl:text-[1.2rem]">
                     {/* zero-width space lets a long email wrap before the @ instead of mid-word */}
-                    {c.value.replace('@', '​@')}
+                    {c.value.replace('@', '\u200b@')}
                   </span>
                 </span>
                 <ArrowUpRight className="relative ml-auto size-5 shrink-0 text-line-strong transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
@@ -71,7 +71,7 @@ export function ContactCTA({ title = 'Please reach out', accent = 'now.' }: { ti
 
         <Reveal delay={0.1} className="mt-10 flex flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-lg text-muted">
-            <span className="font-serif text-xl text-ink italic">@{contact.handle}</span> on every social media
+            <span className="font-serif text-xl text-ink">@{contact.handle}</span> on every social media
           </p>
           <SocialIcons itemClassName="border-line-strong text-navy-900 hover:bg-navy-950 hover:border-navy-950 hover:text-white" />
         </Reveal>

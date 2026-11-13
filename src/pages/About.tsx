@@ -1,7 +1,7 @@
 import { HeartHandshake, Lightbulb, Microscope, MicVocal, Music2 } from 'lucide-react'
 import { FaLinkedinIn } from 'react-icons/fa6'
 import portrait from '../assets/img/afe-paul-portrait-web.jpg'
-import monogram from '../assets/img/monogram-light.png'
+import brandIcon from '../assets/img/brand-icon.webp'
 import { ContactCTA } from '../components/sections/ContactCTA'
 import { Button } from '../components/ui/Button'
 import { PageHero } from '../components/ui/PageHero'
@@ -39,8 +39,8 @@ export default function About() {
             </div>
             <p className="eyebrow mt-8 text-right !text-[0.58rem] text-muted">Photo · King David</p>
             <div className="absolute -bottom-6 -left-6">
-              <RotatingBadge text="Aduragbemi • Paul • Afe • " className="size-28 bg-ember-600 text-white shadow-xl">
-                <img src={monogram} alt="" className="h-11 w-auto" />
+              <RotatingBadge text="Aduragbemi • Paul • Afe • " className="size-28 bg-white text-navy-950 shadow-xl ring-1 ring-line">
+                <img src={brandIcon} alt="" className="h-11 w-auto" />
               </RotatingBadge>
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function About() {
               eyebrow="The person behind the brand"
               title={
                 <>
-                  Created to sing to <em className="text-ember-600">human hearts.</em>
+                  Created to sing to <span className="text-ember-600">human hearts.</span>
                 </>
               }
             />
@@ -75,7 +75,7 @@ export default function About() {
               <p>
                 A gospel recording artist and music instructor, Afe Paul teaches voice, violin and music theory, and is
                 rarely far from an acoustic guitar. The music moves from Afro-Western gospel and worship to hymns, a
-                full Christmas album — <em>Lord of Christmas</em> — and the storytelling <em>#oldskool</em> gospel
+                full Christmas album — <span>Lord of Christmas</span> — and the storytelling <span>#oldskool</span> gospel
                 series.
               </p>
             </Reveal>
@@ -99,7 +99,7 @@ export default function About() {
             eyebrow="Many shades, one person"
             title={
               <>
-                The hats Afe Paul <em className="text-ember-600">wears.</em>
+                The hats Afe Paul <span className="text-ember-600">wears.</span>
               </>
             }
           />
@@ -110,7 +110,7 @@ export default function About() {
                   <span className="flex size-12 items-center justify-center rounded-full bg-ember-50 text-ember-600 transition-colors duration-500 group-hover:bg-ember-600 group-hover:text-white">
                     <r.icon className="size-5" />
                   </span>
-                  <h3 className="mt-6 text-[1.3rem] leading-snug font-normal transition-colors duration-500 group-hover:!text-white">{r.title}</h3>
+                  <h3 className="mt-6 text-[1.3rem] leading-snug font-bold transition-colors duration-500 group-hover:!text-white">{r.title}</h3>
                   <p className="mt-2 text-[0.95rem] leading-relaxed text-muted transition-colors duration-500 group-hover:text-white/70">{r.text}</p>
                 </div>
               </RevealItem>
@@ -130,7 +130,7 @@ export default function About() {
             <Reveal key={b.label} delay={i * 0.1} className="h-full bg-white p-8 md:p-12">
               <p className="eyebrow text-ember-600">{b.label}</p>
               <p className="mt-5 font-serif text-[1.6rem] leading-snug text-ink md:text-[1.9rem]">{b.text}</p>
-              {b.extra && <p className="mt-5 font-serif text-lg text-ember-700 italic">{b.extra}</p>}
+              {b.extra && <p className="mt-5 font-serif text-lg text-ember-700">{b.extra}</p>}
             </Reveal>
           ))}
         </div>

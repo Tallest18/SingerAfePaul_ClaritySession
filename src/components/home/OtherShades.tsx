@@ -22,7 +22,7 @@ export function OtherShades() {
           eyebrow="Other Shades"
           title={
             <>
-              More of <em className="text-ember-600">Singer Afe Paul.</em>
+              More of <span className="text-ember-600">Singer Afe Paul.</span>
             </>
           }
           intro="Four more ways to experience the brand — conversations, music, research and the person behind it all."
@@ -60,7 +60,7 @@ export function OtherShades() {
 
                   <div className="relative">
                     <s.icon className="size-6 text-ember-300" />
-                    <h3 className="mt-3 text-[1.55rem] leading-tight font-normal !text-white">{s.title}</h3>
+                    <h3 className="mt-3 text-[1.55rem] leading-tight font-bold !text-white">{s.title}</h3>
                     <p className="mt-2 max-h-0 overflow-hidden text-[0.92rem] leading-relaxed text-white/75 opacity-0 transition-all duration-700 group-hover:max-h-32 group-hover:opacity-100 max-lg:max-h-32 max-lg:opacity-100">
                       {s.blurb}
                     </p>

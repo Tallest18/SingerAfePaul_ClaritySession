@@ -38,12 +38,12 @@ export function PageHero({ eyebrow, title, accent, intro, children, aside, class
             <span className="text-ember-600">{eyebrow}</span>
           </motion.nav>
 
-          <h1 className="mt-6 text-display font-normal">
+          <h1 className="mt-6 text-display font-extrabold">
             <SplitWords text={title} />
             {accent && (
               <>
                 {' '}
-                <SplitWords text={accent} delay={0.2} className="text-ember-600 italic" />
+                <SplitWords text={accent} delay={0.2} className="text-ember-600" />
               </>
             )}
           </h1>

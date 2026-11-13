@@ -1,11 +1,12 @@
 import { useLenis } from 'lenis/react'
 import { MessageCircle } from 'lucide-react'
-import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
+import { motion, useScroll, useSpring } from 'motion/react'
 import { useEffect, useLayoutEffect } from 'react'
-import { useLocation, useOutlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { whatsappLink } from '../../lib/utils'
 import { Footer } from './Footer'
 import { Header } from './Header'
+import { PageErrorBoundary } from './PageErrorBoundary'
 import { TopBar } from './TopBar'
 
 /** Thin burnt-orange reading-progress bar pinned to the top of the viewport. */
@@ -50,7 +51,6 @@ function ScrollManager() {
 
 export function Layout() {
   const location = useLocation()
-  const outlet = useOutlet()
 
   return (
     <>
@@ -65,18 +65,13 @@ export function Layout() {
       <TopBar />
       <Header />
 
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.main
-          id="main"
-          key={location.pathname}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
-        >
-          {outlet}
-        </motion.main>
-      </AnimatePresence>
+      {/* New page fades in with a CSS animation — it never waits on the old page,
+          so a stalled animation can't leave the screen empty. */}
+      <main id="main" key={location.pathname} className="animate-page-in">
+        <PageErrorBoundary>
+          <Outlet />
+        </PageErrorBoundary>
+      </main>
 
       <Footer />
 

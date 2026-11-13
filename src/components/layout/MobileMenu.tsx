@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { bookings, contact, shades } from '../../data/site'
 import { cn } from '../../lib/utils'
+import { SmartLink } from '../ui/SmartLink'
 import { SocialIcons } from '../ui/SocialIcons'
 import { Wordmark } from '../ui/Wordmark'
 
@@ -112,14 +113,14 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
               <ul className="mt-4 grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
                 {bookings.map((b) => (
                   <li key={b.id}>
-                    <Link
+                    <SmartLink
                       to={b.to}
                       className="flex h-full items-center gap-3 rounded-2xl border border-line bg-white px-4 py-3 text-[0.92rem] leading-snug text-ink transition-colors active:bg-ember-50"
                     >
                       <b.icon className="size-4 shrink-0 text-ember-600" />
                       <span className="flex-1">{b.label}</span>
                       <ArrowUpRight className="size-3.5 shrink-0 text-line-strong" />
-                    </Link>
+                    </SmartLink>
                   </li>
                 ))}
               </ul>

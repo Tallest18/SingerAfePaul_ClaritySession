@@ -31,7 +31,7 @@ export default function Research() {
             <div aria-hidden className="absolute -top-20 -right-20 size-64 rounded-full bg-ember-600/40 blur-3xl" />
             <NotebookPen className="relative size-8 text-ember-300" />
             <p className="relative mt-6 font-serif text-[1.6rem] leading-snug">
-              “I need a music research <em className="text-ember-300">mentor.</em>”
+              “I need a music research <span className="text-ember-300">mentor.</span>”
             </p>
             <p className="relative mt-4 text-white/70">You’re in the right place. Research mentorship is part of the junction.</p>
             <Link
@@ -51,7 +51,7 @@ export default function Research() {
             eyebrow="Areas of inquiry"
             title={
               <>
-                The questions <em className="text-ember-600">we sit with.</em>
+                The questions <span className="text-ember-600">we sit with.</span>
               </>
             }
             intro="Research that takes both the music and the people seriously."
@@ -64,7 +64,7 @@ export default function Research() {
                     <a.icon className="size-7 text-ember-600" />
                     <span className="font-serif text-5xl text-line transition-colors duration-500 group-hover:text-ember-200">0{i + 1}</span>
                   </div>
-                  <h3 className="mt-8 text-[1.7rem] leading-tight font-normal">{a.title}</h3>
+                  <h3 className="mt-8 text-[1.7rem] leading-tight font-bold">{a.title}</h3>
                   <p className="mt-3 max-w-md text-[1.02rem] leading-relaxed text-muted">{a.text}</p>
                 </div>
               </RevealItem>
@@ -78,7 +78,7 @@ export default function Research() {
         <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 size-[40rem] -translate-1/2 rounded-full bg-ember-600/15 blur-[120px]" />
         <Reveal className="container-x relative">
           <span className="block font-serif text-7xl leading-none text-ember-400">“</span>
-          <p className="mx-auto max-w-4xl font-serif text-[1.8rem] leading-[1.3] italic md:text-[2.6rem]">{narrative.motivation}</p>
+          <p className="mx-auto max-w-4xl font-serif text-[1.8rem] leading-[1.3] md:text-[2.6rem]">{narrative.motivation}</p>
           <p className="eyebrow mt-8 text-ember-300">The Motivation</p>
         </Reveal>
       </section>
@@ -92,7 +92,7 @@ export default function Research() {
                 eyebrow="Research mentorship"
                 title={
                   <>
-                    Guidance from topic to <em className="text-ember-600">findings.</em>
+                    Guidance from topic to <span className="text-ember-600">findings.</span>
                   </>
                 }
                 intro="One-on-one support for anyone researching music — especially where it meets faith and society."
@@ -120,7 +120,7 @@ export default function Research() {
               {audiences.map((a) => (
                 <RevealItem key={a.title} className="h-full">
                   <div className="h-full rounded-2xl border border-line p-6">
-                    <h3 className="text-[1.3rem] font-normal">{a.title}</h3>
+                    <h3 className="text-[1.3rem] font-bold">{a.title}</h3>
                     <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{a.text}</p>
                   </div>
                 </RevealItem>

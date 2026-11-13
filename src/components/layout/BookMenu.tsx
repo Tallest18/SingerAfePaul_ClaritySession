@@ -5,6 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa6'
 import { Link, useLocation } from 'react-router-dom'
 import { bookings } from '../../data/site'
 import { cn, whatsappLink } from '../../lib/utils'
+import { SmartLink } from '../ui/SmartLink'
 
 /** Header "Book now" button with a dropdown of every bookable service. */
 export function BookMenu() {
@@ -105,8 +106,9 @@ export function BookMenu() {
               <ul className="max-h-[60vh] overflow-y-auto p-2" data-lenis-prevent>
                 {bookings.map((b) => (
                   <li key={b.id}>
-                    <Link
+                    <SmartLink
                       to={b.to}
+                      onClick={() => setOpen(false)}
                       className="group flex items-center gap-4 rounded-xl px-3 py-3 transition-colors hover:bg-cream"
                     >
                       <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-ember-50 text-ember-600 transition-colors group-hover:bg-ember-600 group-hover:text-white">
@@ -117,7 +119,7 @@ export function BookMenu() {
                         <span className="block text-[0.8rem] text-muted">{b.hint}</span>
                       </span>
                       <ArrowUpRight className="size-4 shrink-0 text-line-strong transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ember-600" />
-                    </Link>
+                    </SmartLink>
                   </li>
                 ))}
               </ul>
