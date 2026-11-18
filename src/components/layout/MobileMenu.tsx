@@ -47,7 +47,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-white lg:hidden"
           data-lenis-prevent
         >
-          <div className="container-x flex h-[4.5rem] shrink-0 items-center justify-between border-b border-line">
+          <div className="container-x flex h-20 shrink-0 items-center justify-between border-b border-line">
             <Wordmark />
             <button
               type="button"

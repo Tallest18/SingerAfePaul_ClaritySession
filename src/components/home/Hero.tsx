@@ -2,7 +2,7 @@ import { ArrowDown } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import portrait from '../../assets/img/afe-paul-portrait-web.jpg'
-import brandIcon from '../../assets/img/brand-icon-light.webp'
+import brandIcon from '../../assets/img/brand-icon.webp'
 import { contact, featuredRelease } from '../../data/site'
 import { Button } from '../ui/Button'
 import { SplitWords } from '../ui/Reveal'
@@ -119,7 +119,7 @@ export function Hero() {
           <div className="absolute -top-2 -left-4 sm:-left-10">
             <RotatingBadge
               text="Singer Afe Paul • Meaningful Music • "
-              className="size-28 bg-navy-950 text-white shadow-xl sm:size-32"
+              className="size-28 bg-white text-navy-950 shadow-xl ring-1 ring-line sm:size-32"
             >
               <img src={brandIcon} alt="" className="h-12 w-auto sm:h-14" />
             </RotatingBadge>

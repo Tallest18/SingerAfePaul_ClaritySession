@@ -36,7 +36,7 @@ function ScrollManager() {
     const attempt = () => {
       const el = document.querySelector<HTMLElement>(hash)
       if (el) {
-        if (lenis) lenis.scrollTo(el, { offset: -90, duration: 1.2, force: true })
+        if (lenis) lenis.scrollTo(el, { offset: -110, duration: 1.2, force: true })
         else el.scrollIntoView({ behavior: 'smooth' })
         return
       }

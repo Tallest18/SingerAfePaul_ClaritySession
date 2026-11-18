@@ -51,7 +51,7 @@ export const clarityBookingUrl = 'https://forms.gle/GR9e3KxShGuf7u6m6'
 /*  Brand story                                                        */
 /* ------------------------------------------------------------------ */
 export const narrative = {
-  lead: 'Singer Afe Paul is a music brand known for meaningful music, healthy musicianship, quality music education, seasoned social research with the intersection of gospel music, value-first approach to service, music consultancy and integrity at its core.',
+  lead: 'Singer Afe Paul is a music brand known for meaningful music, healthy musicianship, Quality Music Education, seasoned social research with the intersection of gospel music, value-first approach to service, music consultancy and integrity at its core.',
   identity:
     'Singer Afe Paul shares a very close identity with Aduragbemi Paul Afe, who spearheads the brand.',
   intention:
@@ -66,7 +66,7 @@ export type Pillar = { title: string; text: string; icon: LucideIcon }
 export const pillars: Pillar[] = [
   { title: 'Meaningful music', text: 'Songs written and sung to reach the heart, not just the ear.', icon: Music2 },
   { title: 'Healthy musicianship', text: 'Skill, character and wellbeing growing together.', icon: Sprout },
-  { title: 'Quality music education', text: 'Voice, violin and theory taught with clarity and care.', icon: GraduationCap },
+  { title: 'Quality Music Education', text: 'Voice, violin and theory taught with clarity and care.', icon: GraduationCap },
   { title: 'Gospel music research', text: 'Seasoned social research where gospel music meets everyday life.', icon: Microscope },
   { title: 'Value-first service', text: 'Every engagement starts with what truly serves you.', icon: HandHeart },
   { title: 'Music consultancy', text: 'Practical counsel for events, personal ministries and music projects.', icon: Lightbulb },

@@ -18,9 +18,12 @@ export function Footer() {
       <div className="container-x pt-16 md:pt-20">
         <div className="grid gap-12 border-b border-white/10 pb-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Wordmark tone="light" variant="full" className="origin-left" />
+            {/* original-colour logo on a white panel (never recoloured for the dark footer) */}
+            <div className="inline-block rounded-2xl bg-white px-5 py-4 shadow-[0_20px_40px_-25px_rgba(0,0,0,0.6)]">
+              <Wordmark size="footer" />
+            </div>
             <p className="mt-6 max-w-md leading-relaxed">
-              Meaningful music, healthy musicianship, quality music education, gospel music research and music
+              Meaningful music, healthy musicianship, Quality Music Education, gospel music research and music
               consultancy — with integrity at the core.
             </p>
             <SocialIcons

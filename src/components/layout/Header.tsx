@@ -2,7 +2,7 @@ import { ArrowRight, ArrowUpRight, ChevronDown, Menu } from 'lucide-react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { shades } from '../../data/site'
+import { clarityBookingUrl, shades } from '../../data/site'
 import { cn } from '../../lib/utils'
 import { Wordmark } from '../ui/Wordmark'
 import { BookMenu } from './BookMenu'
@@ -70,7 +70,7 @@ export function Header() {
             : 'border-transparent bg-white',
         )}
       >
-        <div className="container-x flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
+        <div className="container-x flex h-20 items-center justify-between gap-6 lg:h-24">
           <Wordmark />
 
           <nav aria-label="Main" className="hidden h-full items-stretch gap-8 lg:flex">
@@ -123,13 +123,24 @@ export function Header() {
                             Need clarity? Book a <span className="text-ember-300">Personal Clarity Session.</span>
                           </p>
                         </div>
-                        <Link
-                          to="/clarity-talks"
-                          className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ember-300 hover:text-ember-200"
-                        >
-                          See the plans
-                          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
+                        <div className="mt-8 flex flex-col items-start gap-2.5">
+                          <a
+                            href={clarityBookingUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group inline-flex items-center gap-2 text-sm font-semibold text-ember-300 hover:text-ember-200"
+                          >
+                            Book a session
+                            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          </a>
+                          <Link
+                            to="/clarity-talks#plans"
+                            className="group inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white"
+                          >
+                            See the plans
+                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                          </Link>
+                        </div>
                       </div>
                       <ul className="col-span-3 divide-y divide-line p-2">
                         {shades.map((s) => (

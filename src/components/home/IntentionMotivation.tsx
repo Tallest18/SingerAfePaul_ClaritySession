@@ -43,7 +43,7 @@ export function IntentionMotivation() {
           items={[
             'Meaningful music',
             'Healthy musicianship',
-            'Quality music education',
+            'Quality Music Education',
             'Gospel music research',
             'Music consultancy',
             'Value-first service',

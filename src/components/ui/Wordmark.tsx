@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom'
-import logoLight from '../../assets/img/brand-logo-light.webp'
-import wordmarkLight from '../../assets/img/brand-wordmark-light.webp'
-import wordmark from '../../assets/img/brand-wordmark.webp'
+import logo from '../../assets/img/brand-logo.webp'
 import { cn } from '../../lib/utils'
 
 type Props = {
-  /** dark artwork for light backgrounds, light artwork for navy backgrounds */
-  tone?: 'dark' | 'light'
-  /** "wordmark" = SINGERAFEPAUL lettering + swoosh (header), "full" = with the microphone (footer) */
-  variant?: 'wordmark' | 'full'
+  /** "header" for the top bar and mobile menu, "footer" for the larger footer version */
+  size?: 'header' | 'footer'
   className?: string
 }
 
-/** The SingerAfePaul brand logo, linking home. (Clarity Talks has its own logo on its page.) */
-export function Wordmark({ tone = 'dark', variant = 'wordmark', className }: Props) {
-  const src = variant === 'full' ? logoLight : tone === 'light' ? wordmarkLight : wordmark
+/**
+ * The SingerAfePaul logo exactly as designed — microphone and note above,
+ * SINGERAFEPAUL below, swoosh underneath, original colours. It is never
+ * rearranged or recoloured; on dark backgrounds it sits on a white panel.
+ * (Clarity Talks has its own logo on its page.)
+ */
+export function Wordmark({ size = 'header', className }: Props) {
   return (
     <Link
       to="/"
@@ -22,11 +22,11 @@ export function Wordmark({ tone = 'dark', variant = 'wordmark', className }: Pro
       aria-label="Singer Afe Paul — home"
     >
       <img
-        src={src}
+        src={logo}
         alt="SingerAfePaul"
         className={cn(
           'w-auto transition-transform duration-500 ease-[var(--ease-editorial)] group-hover:scale-[1.03]',
-          variant === 'full' ? 'h-32 md:h-36' : 'h-9 sm:h-10 lg:h-11',
+          size === 'footer' ? 'h-28 md:h-32' : 'h-16 lg:h-[5.25rem]',
         )}
       />
     </Link>
