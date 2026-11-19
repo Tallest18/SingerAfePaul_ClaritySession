@@ -47,7 +47,7 @@ export default function About() {
         }
       >
         <Button href={linkedin.href} variant="navy" icon={<FaLinkedinIn className="size-4" />}>
-          Connect on LinkedIn
+          Connect on LinkedIn.
         </Button>
       </PageHero>
 
