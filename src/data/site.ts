@@ -82,11 +82,6 @@ export type Need = {
   answer: string
   text: string
   icon: LucideIcon
-  /**
-   * Specific things people ask for under this need. Shown under the statement,
-   * and each opens its own ready-made WhatsApp message.
-   */
-  options?: string[]
   /** internal page that goes deeper on this need */
   to?: string
   toLabel?: string
@@ -118,7 +113,7 @@ export const needs: Need[] = [
     id: 'perform',
     need: 'I need people to sing/play at an event',
     answer: 'Ministration & performance',
-    text: 'Book Now, or a dependable team of singers and instrumentalists, for your service, concert, wedding or celebration.',
+    text: 'Book Singer Afe Paul, or a dependable team of singers and instrumentalists, for your service, concert, wedding or celebration.',
     icon: MicVocal,
   },
   {
@@ -140,10 +135,11 @@ export const needs: Need[] = [
   {
     id: 'buy',
     need: 'I need to buy something',
-    options: ['my personal instrument', 'bulk buying', 'instrument accessories'],
-    answer: 'Instruments & accessories',
-    text: 'Whether it’s your personal instrument, bulk buying or instrument accessories — tell us what you need and we’ll help you get it.',
+    answer: 'Music & resources',
+    text: 'Listen to and support the music — tracks, albums and videos — and ask about other available music resources.',
     icon: ShoppingBag,
+    to: '/music',
+    toLabel: 'Tracks & albums',
   },
   {
     id: 'research',
