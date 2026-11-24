@@ -16,7 +16,8 @@ export function NeedsList({ defaultOpen = null }: { defaultOpen?: string | null 
     <ul className="border-t border-ink">
       {needs.map((n, i) => {
         const isOpen = open === n.id
-        const message = `Hello Singer Afe Paul, ${n.need.charAt(0).toLowerCase()}${n.need.slice(1).replace(/[!.]$/, '')}.`
+        // every need starts with "I need…", so the capital I is kept
+        const message = `Hello Singer Afe Paul, ${n.need.replace(/[!.]$/, '')}.`
         return (
           <motion.li
             key={n.id}
@@ -63,6 +64,11 @@ export function NeedsList({ defaultOpen = null }: { defaultOpen?: string | null 
                 >
                   {n.need}
                 </span>
+                {n.options && (
+                  <span className="mt-1 block text-[0.95rem] leading-snug text-muted md:text-[1.05rem]">
+                    {n.options[0].charAt(0).toUpperCase() + n.options.join(', ').slice(1)}
+                  </span>
+                )}
               </span>
               <span className="eyebrow hidden shrink-0 text-muted lg:block">{n.answer}</span>
               <span
@@ -89,6 +95,23 @@ export function NeedsList({ defaultOpen = null }: { defaultOpen?: string | null 
                     <div className="max-w-2xl md:col-span-2 md:col-start-1">
                       <p className="eyebrow text-ember-600">The answer · {n.answer}</p>
                       <p className="mt-3 text-[1.05rem] leading-relaxed text-body md:text-lg">{n.text}</p>
+                      {n.options && (
+                        <ul className="mt-5 flex flex-wrap gap-2.5" aria-label="Choose what you need">
+                          {n.options.map((o) => (
+                            <li key={o}>
+                              <a
+                                href={whatsappLink(`Hello Singer Afe Paul, ${n.need}: ${o}.`)}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-2 rounded-full border border-ember-600/40 bg-white px-4 py-2 text-sm font-medium text-ember-700 transition-colors hover:border-ember-600 hover:bg-ember-600 hover:text-white"
+                              >
+                                <FaWhatsapp className="size-3.5" />
+                                {o.charAt(0).toUpperCase() + o.slice(1)}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="flex flex-wrap items-center gap-3 md:col-start-3 md:justify-end">
                       <a

@@ -256,7 +256,7 @@ export default function Music() {
               href={whatsappLink('Hello Singer Afe Paul, I need people to sing/play at an event.')}
               icon={<FaWhatsapp className="size-4" />}
             >
-              Book Singer Afe Paul
+              Book Now
             </Button>
           </RevealItem>
         </RevealGroup>

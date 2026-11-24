@@ -67,8 +67,8 @@ export default function About() {
           <div className="space-y-6 text-[1.15rem] leading-[1.8] text-body lg:col-span-8 md:text-[1.25rem]">
             <Reveal>
               <p className="drop-cap">
-                Aduragbemi Paul Afe spearheads Singer Afe Paul — and the brand and the person share a very close
-                identity. In Afe Paul’s own words: a singer of the course of Christ, created to sing to humans’ hearts.
+              Aduragbemi Paul Afe spearheads Singer Afe Paul, a brand that shares a close identity with the person behind it. In Afe Paul's own words: 
+              "A singer in the course of Christ, created to sing to the hearts of people.
               </p>
             </Reveal>
             <Reveal>
